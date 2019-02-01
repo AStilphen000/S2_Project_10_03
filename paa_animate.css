@@ -20,31 +20,49 @@
 
 
 /* Transition Effects */
+/* In this styles section we are effecting the nav with the id gameLinks with the hypertext links with the positioning relative which allows the box's postition to be calculated to the normal flow, the top', 'right', 'bottom', and 'left' properties apply. the color of the font for the hypertext links are white and the font-size is 0.5 seconds because it will be transitoning.  */
 nav#gameLinks a {
     position: relative;
     color: white;
-    font-size: 0.5s;
+    transition: color 0.5s;
 }
 
+/* This style rule is the same as the last except once you hover your curser over the hypertext links the font will appear a different color. */
 nav#gameLinks a:hover {
     color: rgb(255, 194, 99);
 }
 
-nav#gameLinks a::after {
-    content: "empty";
+/* Tis style rule is affecting under the hypertext links that   */
+nav#gameLinks a::after { 
+    content: "";
     position: absolute;
-    margin-top: 100%;
-    margin-left: 0px;
+    top: 100%;
+    left: 0px;
     width: 0%;
     height: 8px;
-    background: linear-gradient(to right rgb(237, 243, 71) to rgb(188, 74, 0));
+    background: linear-gradient(to right, rgb(237, 243, 71), rgb(188, 74, 0));
     border-radius: 4px;
     opacity: 0;
+    transition: opacity 0.5s, width 0.5s;
+}
+
+nav#gameLinks a:hover::after {
+     opacity: 1;
+     width: 100%;
 }
 /* Sprite Styles */
+div.sprite {
+    position: absolute;
+}
 
+div#bat {
+    width: 40px;
+    height: 50px;
+    top: 100px;
+    left: -50px;
+    background-image: url(paa_bat.png);
 
-
+}
 
 /* Animation Styles */
 

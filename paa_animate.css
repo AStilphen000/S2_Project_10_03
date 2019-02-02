@@ -32,7 +32,7 @@ nav#gameLinks a:hover {
     color: rgb(255, 194, 99);
 }
 
-/* Tis style rule is affecting under the hypertext links that   */
+/* This style rule is affecting under the hypertext links that makes a line gradient throughout the bar to the transition colors. */
 nav#gameLinks a::after { 
     content: "";
     position: absolute;
@@ -46,6 +46,7 @@ nav#gameLinks a::after {
     transition: opacity 0.5s, width 0.5s;
 }
 
+/* This style rule is just changing the appearence of the linear grandient underneath the hypertext links. */
 nav#gameLinks a:hover::after {
      opacity: 1;
      width: 100%;
@@ -55,14 +56,59 @@ div.sprite {
     position: absolute;
 }
 
+/* These style rules are affecting the bat animation in the game, which is anmiating the bat to play for 2 seconds and takes 39 steps forever, then the bat flies right for 8 seconds in a line forever as well. */
 div#bat {
     width: 40px;
     height: 50px;
     top: 100px;
     left: -50px;
-    background-image: url(paa_bat.png);
+    background: url(paa_bat.png) left center/ cover no-repeat; 
+    animation: playSprite 2.000s steps(39) infinite, flyRight 8.000s linear infinite;    
+}
 
+/* The butterfly style rules animates the butterfly's duration 3 seconds long with a 1 second delay taking 33 steps. The next animation makes the butterfly fly right for 6 seconds as well as having the butterfly fly in different animations in one style rule which is what cubic bezier does.   */
+div#butterfly {
+    width: 35px;
+    height: 35px;
+    top: 60px;
+    left: -50px;
+    background: url(paa_bfly.png) left center/ cover no-repeat;
+    animation: playSprite 3s 1s steps(33), flyRight 6s cubic-bezier(0,1,0.73,0) infinite;
+}
+
+/* The fox animation has a duration of 3.5 seconds with a 4 second delay, takking 27 steps forever.  */
+div#fox {
+    width: 280px;
+    height: 260px;
+    bottom: 10px;
+    right: 10px;
+    background: url(paa_fox.png) left center/ cover no-repeat; 
+    animation: playSprite 3.500s 4.000s steps(27) infinite;
 }
 
 /* Animation Styles */
+/* The key frames style rule lets the animations actually work and function, so the keyframes are effecting the different animations for the fox, butterfly and bat in the game. */
+@keyframes playSprite {
+    100% {
+        background-position: right center;
+    }
+} 
 
+@keyframes flyRight {
+    25% {
+        top: 150px;
+    }
+    50% {
+        top: 55px;
+    }
+    65% {
+        top: 120px;
+    }
+    90% {
+        top: 50px;
+    }
+    100% {
+        top: 80px;
+        left: 100%;
+    }
+}
